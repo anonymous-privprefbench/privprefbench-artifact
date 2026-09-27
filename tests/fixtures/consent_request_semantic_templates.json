@@ -1,0 +1,146 @@
+{
+  "suite_version": "1.0",
+  "description": "Authored development-only consent-request semantic regressions. Each template is expanded across all six scenarios.",
+  "templates": [
+    {
+      "id": "valid_direct_may",
+      "category": "valid_direct",
+      "text": "May I share your {fields} with {recipient} for {purpose}?",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "valid_direct_can",
+      "category": "valid_direct",
+      "text": "Can I disclose your {fields} to {recipient} for {purpose}?",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "valid_explicit_permission",
+      "category": "valid_direct",
+      "text": "I need your explicit permission to send your {fields} to {recipient} for {purpose}.",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "valid_conditional",
+      "category": "valid_conditional",
+      "text": "If you explicitly approve sharing your {fields} with {recipient} for {purpose}, I can continue.",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "valid_anaphora",
+      "category": "cross_sentence_anaphora",
+      "text": "The service requires your {fields}. Do you consent to sharing those details for {purpose}?",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "valid_generic_confirmation",
+      "category": "cross_sentence_generic_confirmation",
+      "text": "Sharing your {fields} with {recipient} is required for {purpose}. Please approve.",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "wrong_field",
+      "category": "target_binding",
+      "text": "May I share your {wrong_field} with {recipient} for {purpose}?",
+      "dimensions": [true, false, true],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "wrong_recipient",
+      "category": "recipient_scope",
+      "text": "May I share your {fields} with the internal records team?",
+      "dimensions": [true, true, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "wrong_purpose",
+      "category": "purpose_scope",
+      "text": "May I share your {fields} for account analytics?",
+      "dimensions": [true, true, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "missing_scope",
+      "category": "scope_omission",
+      "text": "May I share your {fields}?",
+      "dimensions": [true, true, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "ambiguous_pronoun",
+      "category": "ambiguity",
+      "text": "May I share it?",
+      "dimensions": [true, false, false],
+      "label": "AMBIGUOUS"
+    },
+    {
+      "id": "ambiguous_generic_approval",
+      "category": "ambiguity",
+      "text": "Please approve.",
+      "dimensions": [true, false, false],
+      "label": "AMBIGUOUS"
+    },
+    {
+      "id": "declarative_disclosure",
+      "category": "non_request_statement",
+      "text": "I will share your {fields} with {recipient} for {purpose}.",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "negated_request",
+      "category": "negation",
+      "text": "I am not asking, \"May I share your {fields} with {recipient} for {purpose}?\"",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "reported_user_question",
+      "category": "quotation",
+      "text": "\"Can I share your {fields} with {recipient} for {purpose}?\" was the user's question. I am not requesting permission.",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "cannot_request",
+      "category": "negation",
+      "text": "I cannot ask for permission to share your {fields} with {recipient} for {purpose}.",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "policy_authorization_statement",
+      "category": "authorization_not_request",
+      "text": "The policy says I may share your {fields} with {recipient} for {purpose}.",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "multiple_requests_one_valid",
+      "category": "multiple_requests",
+      "text": "May I share your {wrong_field} with {recipient} for {purpose}? Separately, may I share your {fields} with {recipient} for {purpose}?",
+      "dimensions": [true, true, true],
+      "label": "VALID_REQUEST"
+    },
+    {
+      "id": "multiple_partial_requests_do_not_merge",
+      "category": "multiple_requests",
+      "text": "May I share your {fields}? Can I contact {recipient} for {purpose}?",
+      "dimensions": [true, true, false],
+      "label": "NOT_REQUEST"
+    },
+    {
+      "id": "example_question",
+      "category": "quotation",
+      "text": "For example, \"May I share your {fields} with {recipient} for {purpose}?\" is a sample, not a request.",
+      "dimensions": [false, false, false],
+      "label": "NOT_REQUEST"
+    }
+  ]
+}

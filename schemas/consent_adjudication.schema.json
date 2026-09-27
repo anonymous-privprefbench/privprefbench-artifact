@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privprefbench.example/schemas/consent_adjudication.schema.json",
+  "title": "PrivPrefBench resolved consent-request adjudication",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first_turn_id",
+    "label",
+    "adjudicator_id",
+    "evidence",
+    "action_explicit",
+    "protected_fields_complete",
+    "recipient_or_purpose_scoped",
+    "source_annotators",
+    "notes"
+  ],
+  "properties": {
+    "first_turn_id": {"type": "string", "minLength": 1},
+    "label": {
+      "enum": ["VALID_REQUEST", "NOT_REQUEST", "AMBIGUOUS"]
+    },
+    "adjudicator_id": {"type": "string", "minLength": 1},
+    "evidence": {"type": "string", "minLength": 1},
+    "action_explicit": {"type": "boolean"},
+    "protected_fields_complete": {"type": "boolean"},
+    "recipient_or_purpose_scoped": {"type": "boolean"},
+    "source_annotators": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"label": {"const": "VALID_REQUEST"}}},
+      "then": {
+        "properties": {
+          "action_explicit": {"const": true},
+          "protected_fields_complete": {"const": true},
+          "recipient_or_purpose_scoped": {"const": true}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action_explicit": {"const": true},
+          "protected_fields_complete": {"const": true},
+          "recipient_or_purpose_scoped": {"const": true}
+        }
+      },
+      "then": {"properties": {"label": {"const": "VALID_REQUEST"}}}
+    }
+  ]
+}
